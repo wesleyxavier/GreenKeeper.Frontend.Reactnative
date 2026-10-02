@@ -4,12 +4,12 @@
 
 ## 0. Bootstrap e Branch
 
-- [ ] 0.1 **[AUTORIZAÇÃO] Commit inicial e `develop`** (repo vazio, sem `develop`)
+- [x] 0.1 **[AUTORIZAÇÃO] Commit inicial e `develop`** (repo vazio, sem `develop`)
   - **Comando:** `git add openspec .claude && git commit -m "chore: bootstrap openspec" && git push -u origin main && git branch develop && git push -u origin develop`
   - **Contexto:** design.md Decisão 19 — a regra de worktree parte de `develop`.
   - **Done:** `git branch -a` mostra `main`, `develop` e os remotos.
 
-- [ ] 0.2 **Criar worktree `feature/app-skeleton`** (skill `openspec-worktree`)
+- [x] 0.2 **Criar worktree `feature/app-skeleton`** (skill `openspec-worktree`)
   - **Comando:** `git worktree add worktrees/skeleton -b feature/app-skeleton develop` (path curto de propósito: aapt2/OneDrive)
   - **Done:** `git worktree list` mostra `worktrees/skeleton` na branch `feature/app-skeleton`. Todas as tasks seguintes rodam dentro desse worktree.
 
@@ -19,27 +19,27 @@
 
 > Se um spike falhar, **parar e revisar design.md** antes de seguir.
 
-- [ ] 1.1 **Spike (a): APK com JDK 17 no Docker**
+- [x] 1.1 **Spike (a): APK com JDK 17 no Docker**
   - **O que fazer:** projeto Expo mínimo (`create-expo-app`, SDK 56) + `Dockerfile.build` provisório (Node conforme o SDK, JDK 17, Android cmdline-tools) + `expo prebuild --platform android` + `./gradlew assembleRelease`.
   - **Contexto:** design.md Decisão 16 e Open Questions (Node, compileSdk, JDK).
   - **Done:** APK gerado; registrar em design.md as versões reais de Node, `compileSdk`, `build-tools` e se o JDK 17 bastou.
 
-- [ ] 1.2 **Spike (b): emulador + Maestro com KVM**
+- [x] 1.2 **Spike (b): emulador + Maestro com KVM**
   - **O que fazer:** subir emulador x86_64 headless num container (WSL2 com `/dev/kvm`), instalar o APK do spike (a) e rodar um fluxo Maestro que abre o app.
   - **Contexto:** design.md Decisões 16 e 18; risco de KVM.
   - **Done:** Maestro abre o app e tira screenshot; se não houver KVM, registrar o plano B (runner Linux) em design.md.
 
-- [ ] 1.3 **Spike (c): banco na web**
+- [x] 1.3 **Spike (c): banco na web**
   - **O que fazer:** `expo-sqlite` + Drizzle rodando no `expo export --platform web` (OPFS/COOP-COEP); se instável, protótipo IndexedDB com a mesma interface.
   - **Contexto:** design.md Decisão 5.
   - **Done:** decisão registrada em design.md (adapter web escolhido) com um insert + select funcionando no Chromium.
 
-- [ ] 1.4 **Spike (d): BottomSheet e Reanimated no PWA**
+- [x] 1.4 **Spike (d): BottomSheet e Reanimated no PWA**
   - **O que fazer:** testar `@gorhom/bottom-sheet` no Android e na web; se a web falhar, protótipo do sheet próprio (`Modal` + `Animated`).
   - **Contexto:** design.md Decisão 9.
   - **Done:** decisão registrada em design.md; sheet abre e fecha nos dois alvos.
 
-- [ ] 1.5 **Commit + push do grupo 1** (descartar código do spike, manter só as decisões em design.md)
+- [x] 1.5 **Commit + push do grupo 1** (descartar código do spike, manter só as decisões em design.md)
   - **Comando:** `git add openspec && git commit -m "docs: registra decisoes dos spikes" && git push -u origin feature/app-skeleton`
   - **Done:** `git log --oneline -1` mostra o commit.
 

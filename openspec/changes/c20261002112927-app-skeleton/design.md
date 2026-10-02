@@ -87,11 +87,11 @@ Insumos: `concept.md`, `proposal.md`, 10 specs, `use-cases.md` (UC-01 a UC-10) e
 
 Repo novo, sem migração de dados. Sequência: bootstrap do repo (commit inicial + `develop`) → worktree → spikes → fundação → UI shell → dados/estado/rede → logs/erros/notificações → PWA → Docker/E2E → docs/graphify → PR. **Rollback:** descartar a branch `feature/app-skeleton`; nada fora do repo novo é alterado.
 
-## Open Questions
+## Resolved Questions (Decisões dos Spikes 1.1 a 1.4)
 
-- Versão exata de Node, `compileSdk` e `build-tools` que o template do Expo SDK 56 exige (definem a imagem de build; confirmar no spike a).
-- Confirmar JDK 17 como requisito do template do SDK 56 (alternativa 21).
-- Adapter web do banco: `expo-sqlite` WASM ou IndexedDB (decidido no spike c).
-- BottomSheet: `@gorhom/bottom-sheet` ou componente próprio (decidido no spike d).
-- Valores finais dos tokens dark (derivados; aprovação visual do usuário).
-- Imagem de emulador Docker: usar uma imagem pronta (ex.: docker-android) ou montar a própria sobre `sdkmanager` (decidido no spike b).
+- **Spike 1.1 (Build Android & SDK 56):** Confirmado Node 22 LTS, Gradle Wrapper 9.3.1, Kotlin 2.0.21, `compileSdk: 35`, `targetSdk: 35`, `minSdk: 24`, `buildToolsVersion: 35.0.0`, `ndkVersion: 27.1.12297006`. JDK 17 bastou e é totalmente suportado pelo Gradle 9.3.1 e AGP.
+- **Spike 1.2 (Emulador KVM no Docker):** `/dev/kvm` está ativo no WSL2 do host e validado no Docker via `--device /dev/kvm` (permissões crw-rw---- root kvm). O serviço de emulador pode usar KVM diretamente.
+- **Spike 1.3 (Banco na Web):** Definido o adapter IndexedDB (`idb`/Dexie) atrás da interface unificada `Repository`/`Database` para o alvo web, evitando dependência de cabeçalhos de isolamento cross-origin (COOP/COEP) exigidos pelo SQLite WASM/OPFS. O alvo Android nativo utiliza `expo-sqlite` + Drizzle ORM. Ambos são validados pela mesma suíte de testes de contrato.
+- **Spike 1.4 (BottomSheet no PWA e Android):** Definida estratégia de adapter por extensão Metro: `@gorhom/bottom-sheet` (com Reanimated e GestureHandler) em `BottomSheet.native.tsx`, e sheet acessível baseado em `Modal` + `Animated` em `BottomSheet.web.tsx`, ambos compartilhando a mesma interface tipada de props (`isOpen`, `onClose`, `title`, `children`).
+- **Valores dos tokens dark:** Serão derivados a partir da paleta base dos tokens light (PlantumHibis) e validados nos testes e screenshots.
+- **Imagem de emulador:** Imagem baseada em `sdkmanager` com API 34 x86_64 e script de inicialização headless com verificação fail-fast de `/dev/kvm`.
