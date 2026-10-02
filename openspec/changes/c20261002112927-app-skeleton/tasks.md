@@ -47,23 +47,23 @@
 
 ## 2. Fundação do repo
 
-- [ ] 2.1 **Criar `.gitignore`**
+- [x] 2.1 **Criar `.gitignore`**
   - **Conteúdo:** `node_modules/`, `.expo/`, `dist/`, `android/`, `ios/`, `.gradle/`, `local.properties`, `artifacts/`, `*.apk`, `.env`, `worktrees/`, `**/graphify-out/cache`, `.DS_Store`, `Thumbs.db`.
   - **Done:** `git status` não lista esses caminhos depois de gerados.
 
-- [ ] 2.2 **Criar `.graphifyignore`**
+- [x] 2.2 **Criar `.graphifyignore`**
   - **Conteúdo:** `node_modules`, `android`, `dist`, `.expo`, `artifacts`, `*.apk`, lockfiles e assets binários.
   - **Done:** arquivo existe e `graphify update .` ignora esses caminhos.
 
-- [ ] 2.3 **Criar `CLAUDE.md`, `AGENTS.md`, `GEMINI.md` na raiz**
+- [x] 2.3 **Criar `CLAUDE.md`, `AGENTS.md`, `GEMINI.md` na raiz**
   - **O que mudar:** mesmo padrão do repo MAUI (regra absoluta, graphify, "Infos em README.md").
   - **Done:** os 3 arquivos existem e apontam para o README.
 
-- [ ] 2.4 **Criar `README.md` inicial**
+- [x] 2.4 **Criar `README.md` inicial**
   - **Conteúdo:** visão, stack, estrutura de pastas, comandos Docker (placeholders a preencher nos grupos 12 a 14), seção KVM/WSL2.
   - **Done:** README renderiza e lista os comandos previstos.
 
-- [ ] 2.5 **Commit + push do grupo 2**
+- [x] 2.5 **Commit + push do grupo 2**
   - **Comando:** `git add . && git commit -m "chore: arquivos de repo (ignore, docs, instrucoes de agentes)" && git push`
   - **Done:** `git log --oneline -1` mostra o commit.
 
