@@ -1,0 +1,11 @@
+schema: genova-workflow
+
+context: |
+  Workspace: Genova — ecossistema pessoal de Wesley (trabalho externo, hobbies, estudos, finanças, IA/LLMs)
+  Executor: Claude Code/Gemini/Codex — Atua diretamente como executor via OpenSpec
+  Regra absoluta: nunca implementar sem change aprovada — ver CLAUDE.md/AGENTS.md/GEMINI.md antes de qualquer execução
+  Worktrees: branches isoladas em {projeto}/worktrees/{branch}/ — ignorado no .gitignore de cada projeto
+  Nomenclatura de changes: c<YYYYMMDDhhmmss>-<nome-kebab> (ex: c20260630120000-add-auth)
+  Branch de feature: feature/<nome-sem-timestamp> (sem o prefixo c nem timestamp)
+  PR destino padrão: develop — confirmar antes se o projeto não tiver essa branch (ex: ValidateAgentInstructionBench usa main). GreenKeeper já possui develop.
+  Commit a cada grupo de tasks concluído; PR criado automaticamente ao finalizar a última task

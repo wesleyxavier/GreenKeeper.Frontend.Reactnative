@@ -1,0 +1,41 @@
+# Build outputs
+bin/
+obj/
+*.user
+
+# NuGet
+.nuget/
+*.nupkg
+packages/
+
+# Visual Studio
+.vs/
+*.suo
+*.userprefs
+
+# SQLite database files
+*.db
+*.db-shm
+*.db-wal
+
+# Rider
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# SDK resolver temp files
+*.SdkResolver.*.proj.Backup.tmp
+
+# MAUI - Android
+**/android/build/
+**/android/.gradle/
+local.properties
+
+# Git worktrees
+worktrees/
+
+artifacts/
+
+**/node_modules/
